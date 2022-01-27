@@ -132,8 +132,11 @@ function handelstart(event){
 function handlemove(event){
   event.preventDefault();
   console.log(event);
-  let touches = event.changedTouches;
-      ctx.lineTo(touches[0].screenX,touches[0].screenY);
+  let rect = event.target.getBoundingClientRect();
+  let x = event.targetTouches[0].pageX - rect.left;
+  let y = event.targetTouches[0].pageY - rect.top;
+ 
+      ctx.lineTo(x,y);
       ctx.stroke();
   
 }
