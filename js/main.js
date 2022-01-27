@@ -133,7 +133,7 @@ function handlemove(event){
   event.preventDefault();
   console.log(event);
   let touches = event.changedTouches;
-      ctx.lineTo(touches[0].pageX,touches[0].pageY);
+      ctx.lineTo(touches[0].screenX,touches[0].screenY);
       ctx.stroke();
   
 }
