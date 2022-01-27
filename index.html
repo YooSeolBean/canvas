@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>그림판</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script defer src="js/main.js"></script>
+</head>
+<body>
+  <canvas id="jsCanvas" class="canvas" style="width:800px; height:800px;"></canvas>
+  <div class="controls">
+    <div class="brush__range">
+      <input class="jsRange" type="range" min="0.1" max="100" value="3" step="0.07">
+      <p>🖌️</p>
+    </div>
+    <div class="erase__range">
+      <input class="jsClear" type="range" min="0.1" max="100" value="3" step="0.07">
+      <p>🏳️</p>
+    </div>
+    <div class="controls__btns">
+      <button id="jsMode">Fill</button>
+      <button id="jsSave">Save</button>
+      <!-- <button id="jsClear">Clear</button> -->
+    </div>
+    <div class="controls__colors jsColor" id="jsColors">
+      <div class="controls__color jsColor" style="background-color:#2c2c2c;"></div>
+      <div class="controls__color jsColor" style="background-color:#fff"></div>
+      <div class="controls__color jsColor" style="background-color:#ff3b30"></div>
+      <div class="controls__color jsColor" style="background-color:#ff9500"></div>
+      <div class="controls__color jsColor" style="background-color:#ffcc00"></div>
+      <div class="controls__color jsColor" style="background-color:#4cd963"></div>
+      <div class="controls__color jsColor" style="background-color:#5ac8fa"></div>
+      <div class="controls__color jsColor" style="background-color:#0579ff"></div>
+      <div class="controls__color jsColor" style="background-color:#f6f9fc"></div>
+      <div class="controls__color jsColor" style="background-color:#ec42f5"></div>
+      <div class="controls__color jsColor" style="background-color:#6f42f5"></div>
+      <div class="controls__color jsColor" style="background-color:#9dfaf4"></div>
+      <div class="controls__color jsColor" style="background-color:#9dfaf4"></div>
+      <div class="controls__color jsColor" style="background-color:#574b17"></div>
+      <div class="controls__color jsColor" style="background-color:#75040f"></div>
+      <div class="controls__color jsColor" style="background-color:#06701b"></div>
+      <div class="controls__color jsColor" style="background-color:#faf207"></div>
+      <div class="controls__color jsColor" style="background-color:#061470"></div>
+      <div class="controls__color jsColor" style="background-color:#888a89"></div>
+      <div class="controls__color jsColor" style="background-color:#0c4acf"></div>
+    </div>
+  </div>
+  
+</body>
+</html>
