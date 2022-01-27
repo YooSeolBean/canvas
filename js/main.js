@@ -19,9 +19,8 @@ const clear = document.querySelector(".jsClear");
 ctx.globalCompositeOperation = 'destination-out';
 const CANVAS_SIZE =800;
 const DEFAULT_COLOR = '#2c2c2c';
+
 //canvas의 width & height값
-//=> html default값으로 넣으면 굳이 필요할까..?
-//=> NO, js에서 꼭 명시해줘야 함
 canvas.width=CANVAS_SIZE;
 canvas.height=CANVAS_SIZE;
 
@@ -30,7 +29,7 @@ ctx.lineWidth = 3;
 ctx.fillStlye = DEFAULT_COLOR;
 ctx.strokeStyle =DEFAULT_COLOR;
 
-// 이 구간 이해 안감
+
 let painting =false;
 let filling = false;
 //----------------------------------------------------------------//
@@ -111,6 +110,42 @@ function eraserClick(event){
   ctx.globalCompositeOperation ='destination-out'
 }
 
+// touch event
+function handelstart(event){
+
+  event.preventDefault();
+  const x = event.offsetX;
+  const y = event.offsetY;
+  if(!painting){
+    ctx.beginPath();
+    ctx.moveTo(x,y);
+  }else{
+    ctx.lineTo(x,y)
+    ctx.stroke(); 
+  }
+
+  if(filling){
+    ctx.fillRect(0,0,CANVAS_SIZE,CANVAS_SIZE); // x,y,width,height;
+  }
+}
+
+function handlemove(event){
+  event.preventDefault();
+  console.log(event);
+  let touches = event.changedTouches;
+      ctx.lineTo(touches[0].pageX,touches[0].pageY);
+      ctx.stroke();
+  
+}
+
+function handleend(event){
+  event.preventDefault();
+  ctx.closePath();
+
+}
+
+
+
 //------------------------------------------------------------//
 // 총체적으로 출력
 /* 🤍onMouseMove(마우스 좌표)
@@ -142,7 +177,14 @@ if(canvas){
   canvas.addEventListener("mouserleave",stopPainting);
   canvas.addEventListener("click",canvasFill)
   canvas.addEventListener("contextmenu",mouseRightClick)
-}
+  
+  //터치기능 추가
+  //false 지정 이유 : event가 상위 엘리먼트로 전달되지 않도록 하기 위함
+  canvas.addEventListener("touchstart",handelstart,false);
+  canvas.addEventListener("touchmove", handlemove,false);
+  canvas.addEventListener("touchend",handleend,false);
+
+  }
 
 Array.from(colors).forEach(color =>
 color.addEventListener("click", handleColor));
